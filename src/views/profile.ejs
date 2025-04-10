@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+</head>
+<body>
+    <div class="over">
+    <div>
+        <div class="card">
+            <div class="lines"></div>
+            <div class="imgBx">
+              <img src="https://i.pravatar.cc/150?u=123" alt="profile">
+            </div>
+            <div class="content">
+              <div class="details">
+                <h2>Alex Johnson<br><span>Senior Developer</span></h2>
+                <div class="data">
+                  <h3>342<br><span>Posts</span></h3>
+                  <h3>120k<br><span>Followers</span></h3>
+                  <h3>285<br><span>Following</span></h3>
+                </div>
+                <div class="actionBtn">
+                  <button>Follow</button>
+                  <button>Message</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+    </div>
+      <div class="boards-section">
+        <h2>My Boards</h2>
+        <div class="boards-container">
+          <div class="board-card" onclick="openBoard('travel')">
+            <img src="https://images.pexels.com/photos/731217/pexels-photo-731217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Travel">
+            <div class="board-title">Travel</div>
+          </div>
+          <div class="board-card" onclick="openBoard('food')">
+            <img src="https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Food">
+            <div class="board-title">Food</div>
+          </div>
+          <div class="board-card" onclick="openBoard('nature')">
+            <img src="https://images.pexels.com/photos/31508204/pexels-photo-31508204/free-photo-of-sunset-over-tranquil-waterfall-in-new-south-wales.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Nature">
+            <div class="board-title">Nature</div>
+          </div>
+          <!-- Add more board cards as needed -->
+        </div>
+      </div>
+      
+      <script>
+        function openBoard(boardName) {
+          // Replace with real routing logic
+          alert("Opening board: " + boardName);
+          // Example: window.location.href = `/boards/${boardName}`;
+        }
+      </script>
+    </div>      
+    
+</body>
+</html>

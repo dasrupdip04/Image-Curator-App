@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <!--pinterest logo-->
+        <img src="https://st3.depositphotos.com/3867453/13558/v/450/depositphotos_135581650-stock-illustration-letter-i-logo-icon-design.jpg" alt="pin logo" class="img1" />
+        <p class="header">Register Now!</p>
+
+        <form action="/register" method="post">
+          <input type="email" name="email" placeholder="Email" class="detail" required /><br />
+          <input type="text" name="username" placeholder="Username" class="detail" required /><br />
+          <input type="text" name="fullname" placeholder="Full name" class="detail" required /><br />
+          <input type="password" name="password" placeholder="Password" class="detail" required /><br />
+          <input type="submit" class="btn" value="Register">
+        </form>
+
+
+        
+
+        <footer>
+          <p>
+            By continuing, you agree to Pinterest's
+            <b>Terms of Service, Privacy policy.</b>
+          </p>
+          <hr />
+          <br>
+          <a class="upbtn" href="/login">Already on this app? Login</a>
+        </footer>
+      </div>
+    </div>
+    <!-- <a class="upbtn"href="">Sign Up</a> -->
+
+  </body>
+</html>
