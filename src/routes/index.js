@@ -97,8 +97,7 @@ router.post("/register", function(req,res){
   })
 }) 
 
-router.post("/login",passport.authenticate("local", {successRedirect:"/profile", failureRedirect:"/login",
-  failureFlash: true}),function(req,res){
+router.post("/login",passport.authenticate("local", {successRedirect:"/profile", failureRedirect:"/login"}),function(req,res){
   res.redirect("/profile")
 
 })
