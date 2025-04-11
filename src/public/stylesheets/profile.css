@@ -15,7 +15,7 @@
   
   .card {
     margin-top: 20px;
-    left: 30%;
+    left: 33%;
     position: relative;
     top: 10%;
     width: 350px;
@@ -138,12 +138,15 @@
   
   .card .content .details .actionBtn {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
     padding: 0 30px;
   }
   
   .card .content .details .actionBtn button {
+    
+    
     padding: 10px 30px;
     border: none;
     outline: none;
@@ -183,9 +186,10 @@
     color: #45f3ff;
   }
   
+  
 
 
-  .boards-section {
+  /* .boards-section {
     width: 100%;
     max-width: 1100px;
     margin: 60px auto;
@@ -207,9 +211,10 @@
     justify-content: center;
   }
   
+  
   .board-card {
     width: 300px;
-    height: 250px;
+    
     background: #2a2a2a;
     border-radius: 20px;
     overflow: hidden;
@@ -236,5 +241,151 @@
     font-weight: 500;
     color: #fff;
     background-color: #1c1c1c;
+  } */
+  .boards-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 30px;
+    color: #fff;
+    font-family: "Gilroy", sans-serif;
+  }
+  
+  .boards-section h2 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #45f3ff;
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: "Gilroy", sans-serif;
+  }
+  
+  .boards-container {
+    column-count: 3;
+    column-gap: 25px;
+    padding: 0 40px; /* Increased left & right margin */
+  }
+  
+  @media (max-width: 1200px) {
+    .boards-container {
+      column-count: 3;
+    }
+  }
+  
+  @media (max-width: 800px) {
+    .boards-container {
+      column-count: 2;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .boards-container {
+      column-count: 1;
+    }
+  }
+  
+  .board-card {
+    
+    background: #2a2a2a;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    break-inside: avoid;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .board-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(69, 243, 255, 0.3);
+  }
+  
+  .board-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-bottom: 1px solid #444;
+    transition: opacity 0.3s ease;
+  }
+  
+  .board-card:hover img {
+    opacity: 0.95;
+  }
+  
+  .board-title {
+    text-align: center;
+    padding: 5px 5px;
+    font-size: 1em;
+    font: bold;
+    font-weight: 500;
+    font-family: "Gilroy", sans-serif;
+    color: #fff;
+    background-color: #2a2a2a;
+  }
+  
+ 
+
+  .mini-post-box {
+    background-color: #000;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #45f3ff;
+    margin: 2rem auto;
+    max-width: 400px;
+  }
+  
+  .mini-post-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .mini-post-box input[type="file"],
+  .mini-post-box input[type="text"] {
+    background-color: #111;
+    color: #45f3ff;
+    border: 1px solid #45f3ff;
+    border-radius: 8px;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .mini-post-box input::placeholder {
+    color: #45f3ff99;
+  }
+  
+  .mini-post-box button {
+    background-color: #45f3ff;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem;
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .mini-post-box button:hover {
+    background-color: #23cbd9;
+  }
+  .delete-btn {
+    background-color: #037077;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    margin: 10px auto;
+    display: block;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    font-family: Gilroy, sans-serif;
+  }
+  
+  .delete-btn:hover {
+    background-color: #037077;
   }
  

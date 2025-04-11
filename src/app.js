@@ -7,9 +7,13 @@ var logger = require('morgan');
 const expressSession = require('express-session');
 const passport = require('passport');
 
+// const flash = require('connect-flash');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
+
+
+var indexRouter = require('./routes/index.js');
+var usersRouter = require('./routes/users.js');
 
 var app = express();
 
@@ -23,6 +27,7 @@ app.use(expressSession({
   saveUninitialized: false,
   secret: "hey hey hey"
 }))
+// app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.serializeUser(usersRouter.serializeUser());

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Uploaded Post</title>
+  <style>
+    body {
+      background-color: black;
+      color: #45f3ff;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      
+    }
+
+    .post-box {
+      border: 2px solid #45f3ff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      background-color: #111;
+      max-height: 50%;
+    }
+
+    .post-box img {
+      width: 100%;
+      
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .post-box .caption {
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .back-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: transparent;
+      border: 1px solid #45f3ff;
+      color: #45f3ff;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #45f3ff;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="post-box">
+    <img src="<%= post.image %>" alt="Uploaded Image">
+    <div class="caption"><%= post.caption %></div>
+    <p style="margin-top:10px; font-size: 14px;">Uploaded by: <%= post.user.username %></p>
+  </div>
+  <a href="/profile"><button class="back-btn">Back to Profile</button></a>
+</body>
+</html>

@@ -16,37 +16,43 @@
             </div>
             <div class="content">
               <div class="details">
-                <h2>Alex Johnson<br><span>Senior Developer</span></h2>
+                <h2>@<%= user.username%><br><span><%= user.fullname%></span></h2>
                 <div class="data">
-                  <h3>342<br><span>Posts</span></h3>
-                  <h3>120k<br><span>Followers</span></h3>
-                  <h3>285<br><span>Following</span></h3>
+                  
+                  <!-- <h3 class="bio">Only thing against the plot is the plot</h3>
+                   -->
                 </div>
                 <div class="actionBtn">
-                  <button>Follow</button>
-                  <button>Message</button>
+                <button onclick=feedb()>Feed</button>
+                  <button onclick=logoutf()>Logout</button>
+                
                 </div>
               </div>
               
             </div>
           </div>
     </div>
+    <section class="mini-post-box">
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+          <input type="file" name="file" required>
+          <input type="text" name="caption" placeholder="Write a caption..." >
+          <button type="submit">Post</button>
+        </form>
+      </section>
+      
       <div class="boards-section">
-        <h2>My Boards</h2>
+        <h2>My Posts</h2>
         <div class="boards-container">
-          <div class="board-card" onclick="openBoard('travel')">
-            <img src="https://images.pexels.com/photos/731217/pexels-photo-731217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Travel">
-            <div class="board-title">Travel</div>
-          </div>
-          <div class="board-card" onclick="openBoard('food')">
-            <img src="https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Food">
-            <div class="board-title">Food</div>
-          </div>
-          <div class="board-card" onclick="openBoard('nature')">
-            <img src="https://images.pexels.com/photos/31508204/pexels-photo-31508204/free-photo-of-sunset-over-tranquil-waterfall-in-new-south-wales.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Nature">
-            <div class="board-title">Nature</div>
-          </div>
-          <!-- Add more board cards as needed -->
+            <% user.posts.forEach(function(post) { %>
+                <div class="board-card" >
+                  <img src="<%= post.image %>" alt="My post">
+                  <div class="board-title"><%= post.caption || 'Untitled' %></div>
+                  <form action="/delete-post/<%= post._id %>" method="POST" onsubmit="return confirm('Delete this post?');">
+                    <button type="submit" class="delete-btn">Delete</button>
+                  </form>
+                </div>
+              <% }); %>
+               
         </div>
       </div>
       
@@ -56,6 +62,27 @@
           alert("Opening board: " + boardName);
           // Example: window.location.href = `/boards/${boardName}`;
         }
+        function logoutf(){
+            fetch('/logout', {
+      method: 'POST',
+      credentials: 'include' // for cookies
+    })
+    .then(response => {
+      if (response.ok) {
+        window.location.href = '/login'; // or your home page
+      } else {
+        alert('Logout failed');
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Error logging out');
+    });
+        }
+
+        function feedb() {
+    window.location.href = "/feed";
+  }
       </script>
     </div>      
     
