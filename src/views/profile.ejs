@@ -1,90 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    <link rel="stylesheet" href="/stylesheets/profile.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile</title>
+  <link rel="stylesheet" href="/stylesheets/profile.css" />
 </head>
 <body>
-    <div class="over">
+  <div class="over">
+    <!-- Profile Card -->
     <div>
-        <div class="card">
-            <div class="lines"></div>
-            <div class="imgBx">
-              <img src="https://i.pravatar.cc/150?u=123" alt="profile">
-            </div>
-            <div class="content">
-              <div class="details">
-                <h2>@<%= user.username%><br><span><%= user.fullname%></span></h2>
-                <div class="data">
-                  
-                  <!-- <h3 class="bio">Only thing against the plot is the plot</h3>
-                   -->
-                </div>
-                <div class="actionBtn">
-                <button onclick=feedb()>Feed</button>
-                  <button onclick=logoutf()>Logout</button>
-                
-                </div>
-              </div>
-              
+      <div class="card">
+        <div class="lines"></div>
+        <div class="imgBx">
+          <img src="https://i.pravatar.cc/150?u=123" alt="profile" />
+        </div>
+        <div class="content">
+          <div class="details">
+            <h2>@<%= user.username %><br /><span><%= user.fullname %></span></h2>
+            <div class="data"></div>
+            <div class="actionBtn">
+              <button onclick="feedb()">Feed</button>
+              <button onclick="logoutf()">Logout</button>
             </div>
           </div>
-    </div>
-    <section class="mini-post-box">
-        <form action="/upload" method="POST" enctype="multipart/form-data">
-          <input type="file" name="file" required>
-          <input type="text" name="caption" placeholder="Write a caption..." >
-          <button type="submit">Post</button>
-        </form>
-      </section>
-      
-      <div class="boards-section">
-        <h2>My Posts</h2>
-        <div class="boards-container">
-            <% user.posts.forEach(function(post) { %>
-                <div class="board-card" >
-                  <img src="<%= post.image %>" alt="My post">
-                  <div class="board-title"><%= post.caption || 'Untitled' %></div>
-                  <form action="/delete-post/<%= post._id %>" method="POST" onsubmit="return confirm('Delete this post?');">
-                    <button type="submit" class="delete-btn">Delete</button>
-                  </form>
-                </div>
-              <% }); %>
-               
         </div>
       </div>
-      
-      <script>
-        function openBoard(boardName) {
-          // Replace with real routing logic
-          alert("Opening board: " + boardName);
-          // Example: window.location.href = `/boards/${boardName}`;
-        }
-        function logoutf(){
-            fetch('/logout', {
-      method: 'POST',
-      credentials: 'include' // for cookies
-    })
-    .then(response => {
-      if (response.ok) {
-        window.location.href = '/login'; // or your home page
-      } else {
-        alert('Logout failed');
-      }
-    })
-    .catch(err => {
-      console.error(err);
-      alert('Error logging out');
-    });
-        }
+    </div>
 
-        function feedb() {
-    window.location.href = "/feed";
-  }
-      </script>
-    </div>      
-    
+    <!-- Post Upload Form -->
+    <section class="mini-post-box">
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" required />
+        <input type="text" name="caption" placeholder="Write a caption..." />
+        <button type="submit">Post</button>
+      </form>
+    </section>
+
+    <!-- TAB SWITCHING CONTAINER -->
+    <div class="profile-tab-switch">
+      <div class="tab-btn-container">
+        <button class="tab-btn active-tab-btn" onclick="showTab('posts')">My Posts</button>
+        <button class="tab-btn" onclick="showTab('boards')">My Boards</button>
+      </div>
+
+      <!-- My Posts Section -->
+      <div id="posts-section" class="tab-content">
+        
+        <div class="boards-container">
+          <% user.posts.forEach(function(post) { %>
+            <div class="board-card">
+              <img src="<%= post.image %>" alt="My post" />
+              <div class="board-title caption"><%= post.caption || 'Untitled' %></div>
+              <form action="/delete-post/<%= post._id %>" method="POST" onsubmit="return confirm('Delete this post?');">
+                <button type="submit" class="delete-btn">Delete</button>
+              </form>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+
+      <!-- My Boards Section (Initially Hidden) -->
+      <div id="posts-section" class="tab-content" style="display: none;">
+        
+        <div class="boards-container">
+          <% user.boards?.forEach(function(board) { %>
+            <div class="board-card">
+              <img src="<%= board.image %>" alt="Board image" />
+              <div class="board-title caption"><%= board.title || 'Untitled Board' %></div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      function showTab(tab) {
+        const postsTab = document.getElementById("posts-section");
+        const boardsTab = document.getElementById("boards-section");
+        const tabBtns = document.querySelectorAll(".tab-btn");
+
+        postsTab.style.display = tab === "posts" ? "block" : "none";
+        boardsTab.style.display = tab === "boards" ? "block" : "none";
+
+        tabBtns.forEach(btn => btn.classList.remove("active-tab-btn"));
+        document.querySelector(`.tab-btn[onclick="showTab('${tab}')"]`).classList.add("active-tab-btn");
+      }
+
+      function logoutf() {
+        fetch('/logout', {
+          method: 'POST',
+          credentials: 'include'
+        })
+        .then(response => {
+          if (response.ok) {
+            window.location.href = '/login';
+          } else {
+            alert('Logout failed');
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          alert('Error logging out');
+        });
+      }
+
+      function feedb() {
+        window.location.href = "/feed";
+      }
+    </script>
+  </div>
 </body>
 </html>

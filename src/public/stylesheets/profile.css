@@ -15,11 +15,11 @@
   
   .card {
     margin-top: 20px;
-    left: 33%;
+    
     position: relative;
     top: 10%;
     width: 350px;
-    height: 15%;
+    margin-bottom: 30px;
     background: #2a2a2a;
     border-radius: 20px;
     overflow: hidden;
@@ -285,7 +285,7 @@
   }
   
   .board-card {
-    
+    width: 90%;
     background: #2a2a2a;
     border-radius: 12px;
     margin-bottom: 25px;
@@ -388,4 +388,53 @@
   .delete-btn:hover {
     background-color: #037077;
   }
+
+  .profile-tab-switch {
+    width: 100%;
+    margin-top: 2rem;
+    padding: 0 2rem;
+    box-sizing: border-box;
+  }
+  
+  /* Tab Buttons Row */
+  .tab-btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Individual Tab Button Style */
+  .tab-btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    background-color: #222;
+    
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    color: white;
+  }
+  
+  /* Highlight for Active Tab */
+  .tab-btn.active-tab-btn {
+    background-color: #eee;
+    color: black;
+  }
  
+
+  .over{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+/* boards */
+
+
+  
