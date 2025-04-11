@@ -4,7 +4,15 @@ const plm = require('passport-local-mongoose');
 
 
 const mongoURI = "mongodb+srv://dasrupdip04:Rupdip2004@pinterestclone1.bts7qwp.mongodb.net/?retryWrites=true&w=majority&appName=PinterestClone1"
-mongoose.connect(mongoURI)
+async function connectDB() {
+  try {
+    await mongoose.connect(MONGODB_URI);
+    console.log('MongoDB connected!');
+  } catch (err) {
+    console.error('MongoDB connection error:', err);
+    throw err; // Important for debugging in Vercel
+  }
+}
 
 
 
